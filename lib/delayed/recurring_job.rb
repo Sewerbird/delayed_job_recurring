@@ -52,6 +52,7 @@ module Delayed
 
     def next_run_time
       times = @schedule_options[:run_at]
+      binding.pry
       times = times.call if times.is_a? Proc
       times = [times] unless times.is_a? Array
       times = times.map{|time| parse_time(time, @schedule_options[:timezone])}
